@@ -13,3 +13,5 @@ from tools.myprint import *
 if __name__ == '__main__':
     my_question = input_question()
     pretty_dict(my_question, ' ')
+    type_of_question = classfied_question(my_question)
+    pretty_dict(type_of_question)
