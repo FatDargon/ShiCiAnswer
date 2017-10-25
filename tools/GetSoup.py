@@ -19,7 +19,7 @@ class Soup():
     def __init__(self, url, encoding='utf-8'):
         self.url = url
         # self.sleep_download_time = 10
-        self.soup = BeautifulSoup("", "html.parser")
+        self.soup = BeautifulSoup("", "lxml")
         self.encoding = encoding
     def my_gzip(self,data):
         buf = StringIO(data)
@@ -47,7 +47,7 @@ class Soup():
             if if_gzip == 'gzip':
 #                 print 'gzip'
                 contents = self.my_gzip(contents)            
-            self.soup = BeautifulSoup(contents, "html.parser")
+            self.soup = BeautifulSoup(contents, "lxml")
             # request.close()
         except urllib2.URLError, e:
             if hasattr(e, "code"):
