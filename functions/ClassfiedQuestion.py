@@ -12,15 +12,15 @@ def classfied_question(my_question):
     type_of_question = 0
     #诗句匹配
     t1 = re.compile("“(.{10,35})”")
-    m1 = re.match(t1, my_question['题目'])
+    m1 = re.search(t1, my_question['题目'])
     if m1:
         shiju = m1.group()
         shiju = re.sub('“|”| ', '', shiju)
     else:
         shiju = ''
     #作品名字匹配
-    t2 = re.compile("《.+》")
-    m2 = re.match(t2, my_question['题目'])
+    t2 = re.compile(r"《(.*?)》")
+    m2 = re.search(t2, my_question['题目'])
     if m2:
         zuopin = m2.group()
         zuopin = re.sub('《|》| ', '', zuopin)
@@ -41,10 +41,11 @@ def classfied_question(my_question):
     #问题类型匹配
     for i in type_of_question_dict:
         t4 = re.compile('.*'+i+'.*')
-        m4 = re.match(t4,my_question['题目'])
+        m4 = re.search(t4,my_question['题目'])
         if m4:
             type_of_question= type_of_question_dict.index(i)
             break
+        
     return {
         '作品':zuopin,
         '诗句':shiju,

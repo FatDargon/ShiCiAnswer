@@ -27,3 +27,10 @@ def pretty_list(obj):
         pretty_dict(item, indent=' ')
         print "*"*20
 
+
+def pretty_little_list(obj):
+    '''
+    打印utf-8的list
+    '''
+    for item in obj:
+        print item

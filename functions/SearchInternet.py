@@ -7,7 +7,7 @@ Created on 2017年10月18日
 from tools.GetSoup import Soup
 from urllib import quote
 def search_in_baidu(words):
-    base_url = "https://www.baidu.com/s?ie=utf-8&wd="
+    base_url = "http://www.baidu.com/s?ie=utf-8&wd="
     url = base_url + quote(words)
     print url
     soup = Soup(url).get_soup()
