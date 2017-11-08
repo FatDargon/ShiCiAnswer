@@ -31,10 +31,11 @@ def search_internt(question_type,my_question):
         'C':'',
         'D':'', 
     '''
-    name = question_type['zuopin']
-    shiju = question_type['shiju']
-    keywords = question_type['shiju']
+    name = question_type['作品']
+    shiju = question_type['诗句']
+    keywords = question_type['关键字']
     question =my_question
     if name != '':
         search_in_baidu(name)
+    pass
         

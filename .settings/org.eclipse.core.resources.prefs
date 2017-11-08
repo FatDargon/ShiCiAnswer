@@ -5,4 +5,6 @@ encoding//functions/SaveQuestion.py=utf-8
 encoding//functions/SearchInternet.py=utf-8
 encoding//main/main.py=utf-8
 encoding//test/test.py=utf-8
+encoding//test/test_qa.py=utf-8
 encoding//test/test_re.py=utf-8
+encoding//tools/DeepLearningProcess.py=utf8
