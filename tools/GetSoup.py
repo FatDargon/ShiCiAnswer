@@ -16,11 +16,12 @@ import gzip
 from StringIO import StringIO
 import time
 class Soup():
-    def __init__(self, url, encoding='utf-8'):
+    def __init__(self, url, encoding='utf-8',host="www.baidu.com"):
         self.url = url
         # self.sleep_download_time = 10
         self.soup = BeautifulSoup("", "lxml")
         self.encoding = encoding
+        self.host = host
     def my_gzip(self,data):
         buf = StringIO(data)
         f = gzip.GzipFile(fileobj=buf)
@@ -29,7 +30,7 @@ class Soup():
         headers = {
             'User-Agent': "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36",
         #    'Host': "pinghot.qq.com",
-            'Host': 'stock.caijing.com.cn',
+            'Host':self.host,
             'Accept-Encoding':'gzip, deflate',
             'Referer': "http://stock.caijing.com.cn/20170605/4280521.shtml",
             'X-Requested-With': "XMLHttpRequest",
