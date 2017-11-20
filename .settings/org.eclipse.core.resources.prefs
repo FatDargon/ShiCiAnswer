@@ -7,6 +7,7 @@ encoding//main/main.py=utf-8
 encoding//test/test.py=utf-8
 encoding//test/test_qa.py=utf-8
 encoding//test/test_re.py=utf-8
+encoding//test/test_rela.py=utf-8
 encoding//tools/DeepLearningProcess.py=utf8
 encoding//tools/Html_Tools.py=utf8
 encoding//tools/TextProcess.py=utf8

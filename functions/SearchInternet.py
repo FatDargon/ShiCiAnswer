@@ -8,6 +8,7 @@ from urllib import quote
 from tools.GetSoup import Soup
 from tools.myprint import pretty_list, pretty_little_list
 import re
+from tools.Html_Tools import get_html_baike
 def search_in_gushici(query_str):
     base_url ="http://so.gushiwen.org/search.aspx?value="+quote(query_str)
     print base_url
@@ -53,7 +54,7 @@ def search_in_gushici(query_str):
         zuozhexiangqing+=t.get_text().strip()    
 #     print zuozhexiangqing
     tags = soup2.find('div',class_='tag').get_text().strip() 
-    tags = re.sub('\s','',tags)   
+    tags = re.sub('\s','',tags)  #去除所有空白字符 
 #     print tags
     tmp5 = soup2.find('div',class_='contson').get_text().strip()   
     
@@ -86,11 +87,28 @@ def search_internt(question_type,my_question):
     '''
     name = question_type['作品']
     shiju = question_type['诗句']
+    list_shiju = re.split('，|。',shiju)
+#     print list_shiju[0]
+#     pretty_little_list(list_shiju)
+#     exit()
     keywords = question_type['关键字']
     type_of_question = question_type['问题类型']
     key_of_type = question_type['类型详解']
     question =my_question
     
     key_for_whole_verse = name+shiju
-    verse = search_in_gushici(shiju)
+    verse = search_in_gushici(list_shiju[0])
     return verse
+def search_in_baike(keywords):
+    base_url = 'https://baike.baidu.com/item/'
+    url = base_url+quote(keywords)
+    print url
+    soup = get_html_baike(url)
+    try:
+        content = soup.find('div',class_='main-content').get_text().strip()
+        content = re.sub('\s','',content)  #去除所有空白字符 
+    except:
+        print 'error in search_in_baike'
+        content = ''
+    return content
+    

@@ -8,10 +8,10 @@ import re
 
 def classfied_question(my_question):
 #     print my_question['题目']
-    type_of_question_dict = ['上一句','下一句','']
+    type_of_question_dict = ['上一句','下一句','指的是']
     type_of_question = 0
     #诗句匹配
-    t1 = re.compile("“(.{10,35})”")
+    t1 = re.compile("“(.{10,}?)”")
     m1 = re.search(t1, my_question['题目'])
     if m1:
         shiju = m1.group()

@@ -4,7 +4,7 @@ Created on 2017年10月18日
 
 @author: Administrator
 '''
-from functions.SearchInternet import search_internt
+from functions.SearchInternet import search_internt, search_in_baike
 from tools.GetSoup import Soup
 from urllib import quote
 from tools.Html_Tools import *
@@ -231,14 +231,39 @@ def kwquery(query):
         # print answer
 
     return answer
-def save_question(question_type,verse):
-    if question_type==1:
+def get_relation(item,verse):
+    content_item = search_in_baike(item)
+    content_verse = str(verse)
+def XiangGuanXing(verse,my_question):
+    list_option=[]
+    list_option.append(my_question['A'])
+    list_option.append(my_question['B'])
+    list_option.append(my_question['C'])
+    list_option.append(my_question['D'])
+    list_score=[]
+    list_abc = ['A','B','C','D']
+    for item in list_option:           
+        if item != '':
+            list_score.append(get_relation(item,verse))
+    return my_question[list_abc[list_score.index(max(list_score))]]
+def save_question(question_type,verse,my_question):
+    
+    name = question_type['作品']
+    shiju = question_type['诗句']
+    keywords = question_type['关键字']
+    type_of_question = question_type['问题类型']
+    key_of_type = question_type['类型详解']
+    question =my_question
+    
+    key_for_whole_verse = shiju+key_of_type
+    if question_type['问题类型']==0 or question_type['问题类型']==1:
+        return kwquery(key_for_whole_verse)
+    elif question_type['问题类型']==2:
+        print '相关性问题'
+        return XiangGuanXing(verse,my_question)
+    elif question_type['问题类型']==3:
         pass
-    elif question_type==1:
+    elif question_type['问题类型']==4:
         pass
-    elif question_type==1:
-        pass
-    elif question_type==1:
-        pass
-    elif question_type==1:
+    elif question_type['问题类型']==6:
         pass
